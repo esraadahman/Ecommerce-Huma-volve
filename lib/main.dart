@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_huma_volve/core/di/injection.dart';
+import 'package:ecommerce_app_huma_volve/core/local_database/shared_prefs_helper.dart';
 import 'package:ecommerce_app_huma_volve/core/observers/app_bloc_observer.dart';
 import 'package:ecommerce_app_huma_volve/core/routing/app_router.dart';
 import 'package:ecommerce_app_huma_volve/core/routing/routes.dart';
@@ -14,12 +15,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = SimpleBlocObserver();
   await setupGetIt();
-  runApp(MyApp(appRouter: AppRouter()));
+  final loggedIn = await isLoggedIn();
+  runApp(MyApp(appRouter: AppRouter(), isLoggedIn: loggedIn));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.appRouter});
+  const MyApp({super.key, required this.appRouter, required this.isLoggedIn});
   final AppRouter appRouter;
+  final bool isLoggedIn;
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(392, 872),
       child: MaterialApp(
         navigatorKey: navigatorKey,
-        initialRoute: Routes.splash,
+        initialRoute: isLoggedIn ? Routes.mainScreen : Routes.splash,
         onGenerateRoute: appRouter.generateRoute,
         title: 'E-Commerce App',
         debugShowCheckedModeBanner: false,
@@ -37,4 +40,9 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<bool> isLoggedIn() async {
+  final token = await SharedPrefHelper.getString(SharedPrefHelper.userTokenKey);
+  return token != null && token.isNotEmpty;
 }

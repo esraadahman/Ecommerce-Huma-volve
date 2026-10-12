@@ -1,10 +1,14 @@
+import 'package:ecommerce_app_huma_volve/features/home/data/model/product_response_model.dart';
 import 'package:flutter/material.dart';
-import '../../../core/dummy_data.dart';
-import '../../../core/theme.dart';
-import '../../details/screens/product_details_screen.dart';
+import '../../../../core/dummy_data.dart';
+import '../../../../core/theme.dart';
+import '../../../details/screens/product_details_screen.dart';
 
 class ProductCard extends StatelessWidget {
-  final Product product;
+  final
+  // Product
+  ProductResponseModel
+  product;
 
   const ProductCard({super.key, required this.product});
 
@@ -12,17 +16,23 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          PageRouteBuilder(
-            transitionDuration: const Duration(milliseconds: 500),
-            pageBuilder: (context, animation, secondaryAnimation) => 
-                ProductDetailsScreen(product: product),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
-        );
+        // Navigator.push(
+        //   context,
+        //   PageRouteBuilder(
+        //     transitionDuration: const Duration(milliseconds: 500),
+        //     pageBuilder:
+        //         (context, animation, secondaryAnimation) =>
+        //             ProductDetailsScreen(product: product),
+        //     transitionsBuilder: (
+        //       context,
+        //       animation,
+        //       secondaryAnimation,
+        //       child,
+        //     ) {
+        //       return FadeTransition(opacity: animation, child: child);
+        //     },
+        //   ),
+        // );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -47,9 +57,15 @@ class ProductCard extends StatelessWidget {
                   Hero(
                     tag: 'product-${product.id}',
                     child: ClipRRect(
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(24),
+                      ),
                       child: Image.network(
-                        product.imageUrl,
+                        // product.images.first ?? product.images.,
+                        product.images.firstWhere(
+                          (image) => image.isNotEmpty,
+                          orElse: () => 'https://via.placeholder.com/300',
+                        ),
                         fit: BoxFit.cover,
                         width: double.infinity,
                         height: double.infinity,
@@ -84,7 +100,7 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      product.name,
+                      product.title,
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 16,

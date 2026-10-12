@@ -13,8 +13,11 @@ import 'package:ecommerce_app_huma_volve/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    final loggedIn = await isLoggedIn();
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(appRouter: AppRouter()));
+    await tester.pumpWidget(
+      MyApp(appRouter: AppRouter(), isLoggedIn: loggedIn),
+    );
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
