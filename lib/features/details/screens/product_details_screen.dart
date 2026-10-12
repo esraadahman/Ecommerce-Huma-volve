@@ -6,7 +6,8 @@ import '../widgets/size_selector.dart';
 import '../../../core/widgets/primary_button.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  final Product product;
+  final Product 
+  product;
 
   const ProductDetailsScreen({super.key, required this.product});
 

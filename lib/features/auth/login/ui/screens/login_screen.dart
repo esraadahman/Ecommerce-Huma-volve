@@ -1,15 +1,6 @@
-import 'package:ecommerce_app_huma_volve/core/di/injection.dart';
-import 'package:ecommerce_app_huma_volve/core/routing/navigation.dart';
-import 'package:ecommerce_app_huma_volve/core/routing/routes.dart';
-import 'package:ecommerce_app_huma_volve/features/auth/login/logic/cubit/login_cubit.dart';
+import 'package:ecommerce_app_huma_volve/core/imports/common_imports.dart'
+    hide State;
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/widgets/custom_text_field.dart';
-import '../../../../../core/widgets/primary_button.dart';
-import '../../../../../core/theme.dart';
-import '../../../../main_navigation/screens/main_navigation_screen.dart';
-import '../../../sign_up/ui/screens/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,31 +10,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // final _formKey = GlobalKey<FormState>();
-  // late final TextEditingController emailController;
-  // late final TextEditingController passwordController;
-
-  // @override
-  // void initState() {
-  //   emailController = TextEditingController();
-  //   passwordController = TextEditingController();
-
-  //   super.initState();
-  // }
-
-  // @override
-  // void dispose() {
-  //   emailController.dispose();
-  //   passwordController.dispose();
-  //   super.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return
-    //  BlocProvider(
-    //   create: (context) => getIt<LoginCubit>(),
-    //   child:
     BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
@@ -53,10 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         if (state is LoginSuccess) {
           context.pushReplacementNamed(Routes.mainScreen);
-          // Navigator.pushReplacement(
-          //   context,
-          //   MaterialPageRoute(builder: (_) => const LoginScreen()),
-          // );
         }
       },
       builder: (context, state) {

@@ -1,15 +1,18 @@
-import 'package:ecommerce_app_huma_volve/core/di/injection.dart';
-import 'package:ecommerce_app_huma_volve/core/routing/navigation.dart';
-import 'package:ecommerce_app_huma_volve/core/routing/routes.dart';
-import 'package:ecommerce_app_huma_volve/features/auth/login/logic/cubit/login_cubit.dart';
-import 'package:ecommerce_app_huma_volve/features/auth/sign_up/logic/cubit/sign_up_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:ecommerce_app_huma_volve/core/di/injection.dart';
+// import 'package:ecommerce_app_huma_volve/core/routing/navigation.dart';
+// import 'package:ecommerce_app_huma_volve/core/routing/routes.dart';
+// import 'package:ecommerce_app_huma_volve/features/auth/login/logic/cubit/login_cubit.dart';
+// import 'package:ecommerce_app_huma_volve/features/auth/sign_up/logic/cubit/sign_up_cubit.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widgets/custom_text_field.dart';
-import '../../../../../core/widgets/primary_button.dart';
-import '../../../../../core/theme.dart';
-import '../../../login/ui/screens/login_screen.dart';
+// import '../../../../../core/widgets/custom_text_field.dart';
+// import '../../../../../core/widgets/primary_button.dart';
+// import '../../../../../core/theme.dart';
+// import '../../../login/ui/screens/login_screen.dart';
+import 'package:ecommerce_app_huma_volve/core/imports/common_imports.dart'
+    hide State;
+import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

@@ -1,10 +1,5 @@
-import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app_huma_volve/core/local_database/shared_prefs_helper.dart';
-import 'package:ecommerce_app_huma_volve/features/auth/data/models/login_request.dart';
-import 'package:ecommerce_app_huma_volve/features/auth/data/repo/auth_repo.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
-
+import '../../../../../core/imports/common_imports.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

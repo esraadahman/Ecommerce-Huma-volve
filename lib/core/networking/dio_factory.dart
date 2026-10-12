@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ecommerce_app_huma_volve/core/local_database/shared_prefs_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:flutter/foundation.dart';
 
@@ -28,11 +29,14 @@ class DioFactory {
   }
 
   static Future<void> addDioHeaders() async {
+    final token = await SharedPrefHelper.getString(
+      SharedPrefHelper.userTokenKey,
+    );
     dio?.options.headers = {
       'Accept': 'application/json',
       // accept:*/*
       'Content-Type': 'application/json',
-      
+      'Authorization': 'Bearer $token',
     };
   }
 
