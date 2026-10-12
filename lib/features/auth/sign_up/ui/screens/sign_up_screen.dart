@@ -55,7 +55,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
         if (state is SignUpSuccess) {
-          context.pushReplacementNamed(Routes.mainScreen);
+          context.pushReplacementNamed(Routes.login);
+          // context.pushReplacementNamed(Routes.mainScreen);
           // Navigator.pushReplacement(
           //   context,
           //   MaterialPageRoute(builder: (_) => const LoginScreen()),
