@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'sign_up_request.g.dart';
+part 'sign_up_request_model.g.dart';
 
 @JsonSerializable()
-class SignUpRequest {
+class SignUpRequestModel {
   final String email;
   final String name;
   final String password;
@@ -11,7 +11,7 @@ class SignUpRequest {
   final String avatar;
 
   // The API requires role and avatar, so the form only asks for email/name/password
-  const SignUpRequest({
+  const SignUpRequestModel({
     required this.email,
     required this.name,
     required this.password,
@@ -19,8 +19,8 @@ class SignUpRequest {
     this.avatar = 'https://picsum.photos/800',
   });
 
-  factory SignUpRequest.fromJson(Map<String, dynamic> json) =>
-      _$SignUpRequestFromJson(json);
+  factory SignUpRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$SignUpRequestModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SignUpRequestToJson(this);
+  Map<String, dynamic> toJson() => _$SignUpRequestModelToJson(this);
 }

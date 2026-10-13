@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sign_up_request.dart';
+part of 'sign_up_request_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-SignUpRequest _$SignUpRequestFromJson(Map<String, dynamic> json) =>
-    SignUpRequest(
+SignUpRequestModel _$SignUpRequestModelFromJson(Map<String, dynamic> json) =>
+    SignUpRequestModel(
       email: json['email'] as String,
       name: json['name'] as String,
       password: json['password'] as String,
@@ -15,7 +15,7 @@ SignUpRequest _$SignUpRequestFromJson(Map<String, dynamic> json) =>
       avatar: json['avatar'] as String? ?? 'https://picsum.photos/800',
     );
 
-Map<String, dynamic> _$SignUpRequestToJson(SignUpRequest instance) =>
+Map<String, dynamic> _$SignUpRequestModelToJson(SignUpRequestModel instance) =>
     <String, dynamic>{
       'email': instance.email,
       'name': instance.name,

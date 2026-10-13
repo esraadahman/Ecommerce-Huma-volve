@@ -8,7 +8,7 @@ final class AllProductsInitial extends AllProductsState {}
 final class AllProductsLoading extends AllProductsState {}
 
 final class AllProductsSuccess extends AllProductsState {
-  final List<ProductResponseModel> products;
+  final List<Product> products;
 
   AllProductsSuccess({required this.products});
 }

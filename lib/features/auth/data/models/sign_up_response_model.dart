@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'sign_up_response.g.dart';
+part 'sign_up_response_model.g.dart';
 
 @JsonSerializable()
-class SignUpResponse {
+class SignUpResponseModel {
   final int id;
   final String email;
   final String name;
@@ -13,7 +13,7 @@ class SignUpResponse {
   final DateTime? creationAt;
   final DateTime? updatedAt;
 
-  const SignUpResponse({
+  const SignUpResponseModel({
     required this.id,
     required this.email,
     required this.name,
@@ -24,8 +24,8 @@ class SignUpResponse {
     this.updatedAt,
   });
 
-  factory SignUpResponse.fromJson(Map<String, dynamic> json) =>
-      _$SignUpResponseFromJson(json);
+  factory SignUpResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$SignUpResponseModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SignUpResponseToJson(this);
+  Map<String, dynamic> toJson() => _$SignUpResponseModelToJson(this);
 }

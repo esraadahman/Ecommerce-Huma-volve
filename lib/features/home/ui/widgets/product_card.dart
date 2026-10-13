@@ -1,15 +1,9 @@
 import 'package:ecommerce_app_huma_volve/core/imports/common_imports.dart';
-import 'package:ecommerce_app_huma_volve/features/home/data/model/product_response_model.dart';
+import 'package:ecommerce_app_huma_volve/features/home/domain/entities/product.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/dummy_data.dart';
-import '../../../../core/theme.dart';
-import '../../../details/screens/product_details_screen.dart';
 
 class ProductCard extends StatelessWidget {
-  final
-  // Product
-  ProductResponseModel
-  product;
+  final Product product;
 
   const ProductCard({super.key, required this.product});
 
@@ -68,6 +62,13 @@ class ProductCard extends StatelessWidget {
                           (image) => image.isNotEmpty,
                           orElse: () => 'https://via.placeholder.com/300',
                         ),
+                        errorBuilder:
+                            (context, error, stackTrace) => const Center(
+                              child: Icon(
+                                Icons.image_not_supported_outlined,
+                                size: 30,
+                              ),
+                            ),
                         fit: BoxFit.cover,
                         width: double.infinity,
                         height: double.infinity,
