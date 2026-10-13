@@ -16,7 +16,20 @@ class AllProductsCubit extends Cubit<AllProductsState> {
         emit(AllProductsFail(errorMessage: failure.displayMessage));
       },
       (result) async {
-        emit(AllProductsSuccess( products: result));
+        emit(AllProductsSuccess(products: result));
+      },
+    );
+  }
+
+  getCategoriesProducts(int categoryId) async {
+    emit(AllProductsLoading());
+    final response = await repo.getCategoriesProducts(categoryId: categoryId);
+    response.fold(
+      (failure) {
+        emit(AllProductsFail(errorMessage: failure.displayMessage));
+      },
+      (result) async {
+        emit(AllProductsSuccess(products: result));
       },
     );
   }
