@@ -1,17 +1,18 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app_huma_volve/features/home/data/model/category_response_model.dart';
-import 'package:ecommerce_app_huma_volve/features/home/data/repo/main_repo.dart';
+import 'package:ecommerce_app_huma_volve/features/home/domain/entities/category.dart';
+import 'package:ecommerce_app_huma_volve/features/home/domain/use_cases/get_all_categories.dart';
 import 'package:meta/meta.dart';
 
 part 'all_categories_state.dart';
 
 class AllCategoriesCubit extends Cubit<AllCategoriesState> {
-  AllCategoriesCubit(this.repo) : super(AllCategoriesInitial());
+  AllCategoriesCubit(this.getAllCategories) : super(AllCategoriesInitial());
 
-  final MainRepo repo;
-  getAllCategories() async {
+  final GetAllCategories getAllCategories;
+  
+  Future<void> getAllCategoriesMethod() async {
     emit(AllCategoriesLoading());
-    final response = await repo.getAllCategories();
+    final response = await getAllCategories();
     response.fold(
       (failure) {
         emit(AllCategoriesFail(errorMessage: failure.displayMessage));

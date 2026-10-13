@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sign_up_response.dart';
+part of 'sign_up_response_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-SignUpResponse _$SignUpResponseFromJson(Map<String, dynamic> json) =>
-    SignUpResponse(
+SignUpResponseModel _$SignUpResponseModelFromJson(Map<String, dynamic> json) =>
+    SignUpResponseModel(
       id: (json['id'] as num).toInt(),
       email: json['email'] as String,
       name: json['name'] as String,
@@ -24,14 +24,15 @@ SignUpResponse _$SignUpResponseFromJson(Map<String, dynamic> json) =>
               : DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$SignUpResponseToJson(SignUpResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'email': instance.email,
-      'name': instance.name,
-      'role': instance.role,
-      'avatar': instance.avatar,
-      'password': instance.password,
-      'creationAt': instance.creationAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-    };
+Map<String, dynamic> _$SignUpResponseModelToJson(
+  SignUpResponseModel instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'email': instance.email,
+  'name': instance.name,
+  'role': instance.role,
+  'avatar': instance.avatar,
+  'password': instance.password,
+  'creationAt': instance.creationAt?.toIso8601String(),
+  'updatedAt': instance.updatedAt?.toIso8601String(),
+};

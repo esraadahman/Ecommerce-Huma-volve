@@ -1,13 +1,10 @@
-import 'package:ecommerce_app_huma_volve/features/home/data/model/product_response_model.dart';
+import 'package:ecommerce_app_huma_volve/features/home/domain/entities/product.dart';
 import 'package:flutter/material.dart';
-import '../../../core/dummy_data.dart';
 import '../../../core/theme.dart';
-import '../widgets/color_selector.dart';
-import '../widgets/size_selector.dart';
 import '../../../core/widgets/primary_button.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  final ProductResponseModel product;
+  final Product product;
 
   const ProductDetailsScreen({super.key, required this.product});
 

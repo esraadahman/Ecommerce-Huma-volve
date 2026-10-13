@@ -5,7 +5,7 @@ import 'package:ecommerce_app_huma_volve/features/auth/login/logic/cubit/login_c
 import 'package:ecommerce_app_huma_volve/features/auth/login/ui/screens/login_screen.dart';
 import 'package:ecommerce_app_huma_volve/features/auth/sign_up/logic/cubit/sign_up_cubit.dart';
 import 'package:ecommerce_app_huma_volve/features/auth/sign_up/ui/screens/sign_up_screen.dart';
-import 'package:ecommerce_app_huma_volve/features/home/data/model/product_response_model.dart';
+import 'package:ecommerce_app_huma_volve/features/home/domain/entities/product.dart';
 import 'package:ecommerce_app_huma_volve/features/home/logic/all_categories/cubit/all_categories_cubit.dart';
 import 'package:ecommerce_app_huma_volve/features/home/logic/all_products/cubit/all_products_cubit.dart';
 import 'package:ecommerce_app_huma_volve/features/home/ui/widgets/product_card.dart';
@@ -49,7 +49,7 @@ class AppRouter {
               ),
         );
       case Routes.productScreen:
-        final product = settings.arguments as ProductResponseModel;
+        final product = settings.arguments as Product;
         return MaterialPageRoute(
           builder:
               (context) =>

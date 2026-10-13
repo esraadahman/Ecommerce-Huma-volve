@@ -22,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AllProductsCubit>().getAllProducts();
-    context.read<AllCategoriesCubit>().getAllCategories();
+    context.read<AllProductsCubit>().getAllProductsMethod();
+    context.read<AllCategoriesCubit>().getAllCategoriesMethod();
   }
 
   @override
@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     // if (_selectedCategoryIndex != 0) {
                                     context
                                         .read<AllProductsCubit>()
-                                        .getCategoriesProducts(
+                                        .getCategoriesProductsMethod(
                                           state.categories[index].id,
                                         );
                                     // }

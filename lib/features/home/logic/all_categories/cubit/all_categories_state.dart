@@ -8,7 +8,7 @@ final class AllCategoriesInitial extends AllCategoriesState {}
 final class AllCategoriesLoading extends AllCategoriesState {}
 
 final class AllCategoriesSuccess extends AllCategoriesState {
-  final List<CategoryResponseModel> categories;
+  final List<Category> categories;
 
   AllCategoriesSuccess({required this.categories});
 }
