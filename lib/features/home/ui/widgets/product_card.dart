@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_huma_volve/core/imports/common_imports.dart';
 import 'package:ecommerce_app_huma_volve/features/home/data/model/product_response_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/dummy_data.dart';
@@ -16,6 +17,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        context.pushNamed(Routes.productScreen, arguments: product);
         // Navigator.push(
         //   context,
         //   PageRouteBuilder(

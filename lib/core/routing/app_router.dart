@@ -5,8 +5,10 @@ import 'package:ecommerce_app_huma_volve/features/auth/login/logic/cubit/login_c
 import 'package:ecommerce_app_huma_volve/features/auth/login/ui/screens/login_screen.dart';
 import 'package:ecommerce_app_huma_volve/features/auth/sign_up/logic/cubit/sign_up_cubit.dart';
 import 'package:ecommerce_app_huma_volve/features/auth/sign_up/ui/screens/sign_up_screen.dart';
+import 'package:ecommerce_app_huma_volve/features/home/data/model/product_response_model.dart';
 import 'package:ecommerce_app_huma_volve/features/home/logic/all_categories/cubit/all_categories_cubit.dart';
 import 'package:ecommerce_app_huma_volve/features/home/logic/all_products/cubit/all_products_cubit.dart';
+import 'package:ecommerce_app_huma_volve/features/home/ui/widgets/product_card.dart';
 import 'package:ecommerce_app_huma_volve/features/main_navigation/screens/main_navigation_screen.dart';
 import 'package:ecommerce_app_huma_volve/features/splash/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +47,17 @@ class AppRouter {
                 create: (context) => getIt<SignUpCubit>(),
                 child: const SignUpScreen(),
               ),
+        );
+      case Routes.productScreen:
+        final product = settings.arguments as ProductResponseModel;
+        return MaterialPageRoute(
+          builder:
+              (context) =>
+              // BlocProvider(
+              //   create: (context) => getIt<SignUpCubit>(),
+              //   child:
+              ProductCard(product: product),
+          //  ),
         );
       default:
         return null;

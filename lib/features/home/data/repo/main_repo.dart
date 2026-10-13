@@ -24,6 +24,22 @@ class MainRepo {
     }
   }
 
+  Future<Either<Failure, List<ProductResponseModel>>> getCategoriesProducts({
+    required int categoryId,
+  }) async {
+    try {
+      final response = await apiServices.getCategoriesProducts(categoryId);
+
+      return right(response);
+    } catch (error) {
+      if (error is DioException) {
+        return left(ServerFailure.fromDioError(error));
+      }
+
+      return left(ServerFailure(localizedKey: "unexpected_error"));
+    }
+  }
+
   Future<Either<Failure, List<CategoryResponseModel>>>
   getAllCategories() async {
     try {

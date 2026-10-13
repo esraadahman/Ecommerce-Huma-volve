@@ -5,4 +5,5 @@ class ApiConstants {
   static const String auth = 'auth/profile';
   static const String products = 'products';
   static const String categories = "categories";
+  static const String productsBycategories = 'categories/{id}/products';
 }

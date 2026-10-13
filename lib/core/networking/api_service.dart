@@ -30,4 +30,9 @@ abstract class ApiServices {
 
   @GET(ApiConstants.categories)
   Future<List<CategoryResponseModel>> getCategories();
+
+    @GET(ApiConstants.productsBycategories)
+  Future<List<ProductResponseModel>> getCategoriesProducts(
+    @Path('id') int categoryId 
+  );
 }

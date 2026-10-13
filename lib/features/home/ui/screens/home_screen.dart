@@ -124,10 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     BlocBuilder<AllCategoriesCubit, AllCategoriesState>(
                       builder: (context, state) {
                         if (state is AllCategoriesLoading) {
-                          return const SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Center(child: CircularProgressIndicator()),
-                          );
+                          return Center(child: CircularProgressIndicator());
                         }
                         if (state is AllCategoriesSuccess) {
                           return SizedBox(
@@ -147,6 +144,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     setState(() {
                                       _selectedCategoryIndex = index;
                                     });
+                                    // if (_selectedCategoryIndex != 0) {
+                                    context
+                                        .read<AllProductsCubit>()
+                                        .getCategoriesProducts(
+                                          state.categories[index].id,
+                                        );
+                                    // }
                                   },
                                 );
                               },
@@ -154,12 +158,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         }
                         if (state is AllCategoriesFail) {
-                          return const SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Center(child: CircularProgressIndicator()),
-                          );
+                          return Center(child: Text(state.errorMessage));
                         }
-                        return const SliverToBoxAdapter(child: SizedBox());
+                        return const SizedBox();
                       },
                     ),
                   ],
@@ -190,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           product: state.products[index],
                           //dummyProducts[index]
                         );
-                      }, childCount: dummyProducts.length),
+                      }, childCount: state.products.length),
                     ),
                   );
                 }
