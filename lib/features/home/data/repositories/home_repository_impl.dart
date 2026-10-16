@@ -14,9 +14,15 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Either<Failure, List<Product>>> getAllProducts() async {
+  Future<Either<Failure, List<Product>>> getAllProducts({
+    required int limit,
+    required int offset,
+  }) async {
     try {
-      final productModels = await remoteDataSource.getAllProducts();
+      final productModels = await remoteDataSource.getAllProducts(
+        limit: limit,
+        offset: offset,
+      );
       final products =
           productModels.map((model) => _toProductEntity(model)).toList();
       return right(products);
@@ -31,10 +37,14 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Either<Failure, List<Product>>> getCategoriesProducts({
     required int categoryId,
+    required int limit,
+    required int offset,
   }) async {
     try {
       final productModels = await remoteDataSource.getCategoriesProducts(
         categoryId: categoryId,
+        limit: limit,
+        offset: offset,
       );
       final products =
           productModels.map((model) => _toProductEntity(model)).toList();

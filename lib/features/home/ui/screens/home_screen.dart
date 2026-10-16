@@ -18,12 +18,27 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedCategoryIndex = 0;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
     context.read<AllProductsCubit>().getAllProductsMethod();
     context.read<AllCategoriesCubit>().getAllCategoriesMethod();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 200) {
+      context.read<AllProductsCubit>().getNextPage();
+    }
   }
 
   @override
@@ -32,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppTheme.background,
       body: SafeArea(
         child: CustomScrollView(
+          controller: _scrollController,
           slivers: [
             SliverToBoxAdapter(
               child: Padding(
@@ -186,12 +202,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisSpacing: 16,
                             mainAxisSpacing: 16,
                           ),
-                      delegate: SliverChildBuilderDelegate((context, index) {
-                        return ProductCard(
-                          product: state.products[index],
-                          //dummyProducts[index]
-                        );
-                      }, childCount: state.products.length),
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          if (index < state.products.length) {
+                            return ProductCard(product: state.products[index]);
+                          }
+                          return const Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        },
+                        childCount:
+                            state.products.length + (state.hasMoreData ? 1 : 0),
+                      ),
                     ),
                   );
                 }

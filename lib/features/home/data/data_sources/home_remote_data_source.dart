@@ -7,14 +7,19 @@ class HomeRemoteDataSource {
 
   HomeRemoteDataSource(this.apiServices);
 
-  Future<List<ProductResponseModel>> getAllProducts() async {
-    return await apiServices.getProducts();
+  Future<List<ProductResponseModel>> getAllProducts({
+    required int limit,
+    required int offset,
+  }) async {
+    return await apiServices.getProducts(limit, offset);
   }
 
   Future<List<ProductResponseModel>> getCategoriesProducts({
     required int categoryId,
+    required int limit,
+    required int offset,
   }) async {
-    return await apiServices.getCategoriesProducts(categoryId);
+    return await apiServices.getCategoriesProducts(categoryId, limit, offset);
   }
 
   Future<List<CategoryResponseModel>> getAllCategories() async {
