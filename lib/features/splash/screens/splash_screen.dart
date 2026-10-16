@@ -1,8 +1,7 @@
-import 'package:ecommerce_app_huma_volve/core/routing/navigation.dart';
 import 'package:ecommerce_app_huma_volve/core/routing/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/theme.dart';
-import '../../auth/login/ui/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

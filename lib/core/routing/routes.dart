@@ -5,4 +5,6 @@ class Routes {
   static const String signup = '/signup';
   static const String mainScreen = '/MainNavigationScreen';
   static const String productScreen = '/productScreen';
+  static const String productDetails = '/productDetails';
+  static const String productDetailsWithId = '/productDetails/:id';
 }

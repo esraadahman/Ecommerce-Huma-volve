@@ -1,7 +1,9 @@
 import 'package:ecommerce_app_huma_volve/features/home/domain/entities/product.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/theme.dart';
 import '../../../core/widgets/primary_button.dart';
+import '../widgets/share_product_button.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final Product product;
@@ -42,9 +44,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
                 child: const Icon(Icons.arrow_back_ios_new, size: 16),
               ),
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.pop(),
             ),
             actions: [
+              ShareProductButton(product: widget.product),
+              const SizedBox(width: 8),
               IconButton(
                 icon: Container(
                   padding: const EdgeInsets.all(8),

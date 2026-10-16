@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_huma_volve/core/imports/common_imports.dart'
     hide State;
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -46,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
         if (state is SignUpSuccess) {
-          context.pushReplacementNamed(Routes.login);
+          context.go(Routes.login);
           // context.pushReplacementNamed(Routes.mainScreen);
           // Navigator.pushReplacement(
           //   context,
@@ -150,7 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         const Text('Already have an account? '),
                         GestureDetector(
                           onTap: () {
-                            context.pushReplacementNamed(Routes.login);
+                            context.go(Routes.login);
                             // Navigator.pushReplacement(
                             //   context,
                             //   PageRouteBuilder(
