@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_huma_volve/core/imports/common_imports.dart';
 import 'package:ecommerce_app_huma_volve/features/home/domain/entities/product.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -11,7 +12,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.productScreen, arguments: product);
+        context.push('${Routes.productDetails}/${product.id}', extra: product);
         // Navigator.push(
         //   context,
         //   PageRouteBuilder(

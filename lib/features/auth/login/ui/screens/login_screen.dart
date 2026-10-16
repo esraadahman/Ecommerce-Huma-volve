@@ -1,6 +1,8 @@
 import 'package:ecommerce_app_huma_volve/core/imports/common_imports.dart'
     hide State;
+import 'package:ecommerce_app_huma_volve/features/auth/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,8 +14,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return
-    BlocConsumer<LoginCubit, LoginState>(
+    return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
           ScaffoldMessenger.of(
@@ -21,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
         if (state is LoginSuccess) {
-          context.pushReplacementNamed(Routes.mainScreen);
+          context.go(Routes.mainScreen);
         }
       },
       builder: (context, state) {
@@ -117,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const Text('Don\'t have an account? '),
                         GestureDetector(
                           onTap: () {
-                            context.pushReplacementNamed(Routes.signup);
+                            context.go(Routes.signup);
                             // Navigator.pushReplacement(
                             //   context,
                             //   PageRouteBuilder(
