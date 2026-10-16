@@ -8,7 +8,15 @@ class GetCategoriesProducts {
 
   GetCategoriesProducts(this.repository);
 
-  Future<Either<Failure, List<Product>>> call({required int categoryId}) {
-    return repository.getCategoriesProducts(categoryId: categoryId);
+  Future<Either<Failure, List<Product>>> call({
+    required int categoryId,
+    required int limit,
+    required int offset,
+  }) {
+    return repository.getCategoriesProducts(
+      categoryId: categoryId,
+      limit: limit,
+      offset: offset,
+    );
   }
 }

@@ -26,13 +26,18 @@ abstract class ApiServices {
   Future<AuthDataResponseModel> getAuthData();
 
   @GET(ApiConstants.products)
-  Future<List<ProductResponseModel>> getProducts();
+  Future<List<ProductResponseModel>> getProducts(
+    @Query('limit') int limit,
+    @Query('offset') int offset,
+  );
 
   @GET(ApiConstants.categories)
   Future<List<CategoryResponseModel>> getCategories();
 
     @GET(ApiConstants.productsBycategories)
   Future<List<ProductResponseModel>> getCategoriesProducts(
-    @Path('id') int categoryId
+    @Path('id') int categoryId,
+    @Query('limit') int limit,
+    @Query('offset') int offset,
   );
 }

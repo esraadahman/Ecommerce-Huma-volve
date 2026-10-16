@@ -8,7 +8,10 @@ class GetAllProducts {
 
   GetAllProducts(this.repository);
 
-  Future<Either<Failure, List<Product>>> call() {
-    return repository.getAllProducts();
+  Future<Either<Failure, List<Product>>> call({
+    required int limit,
+    required int offset,
+  }) {
+    return repository.getAllProducts(limit: limit, offset: offset);
   }
 }

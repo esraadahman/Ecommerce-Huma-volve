@@ -9,8 +9,12 @@ final class AllProductsLoading extends AllProductsState {}
 
 final class AllProductsSuccess extends AllProductsState {
   final List<Product> products;
+  final bool hasMoreData;
 
-  AllProductsSuccess({required this.products});
+  AllProductsSuccess({
+    required this.products,
+    this.hasMoreData = true,
+  });
 }
 
 final class AllProductsFail extends AllProductsState {
